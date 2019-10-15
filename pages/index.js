@@ -1,6 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Nav from "../components/nav";
+import getConfig from "next/config";
+
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 const Home = () => (
   <div>
@@ -12,9 +15,12 @@ const Home = () => (
     <Nav />
 
     <div className="hero">
-      <h1 className="title">The value of customKey is: {process.env.customKey}</h1>
+      <h1 className="title">
+        The value of customKey is: {process.env.customKey}
+      </h1>
       <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
+        publicRuntimeConfig.customKey: {publicRuntimeConfig.customKey} <br />
+        serverRuntimeConfig.customKey: {serverRuntimeConfig.customKey}
       </p>
 
       <div className="row">
